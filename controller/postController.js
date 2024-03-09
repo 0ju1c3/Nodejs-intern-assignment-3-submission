@@ -3,6 +3,7 @@ import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
 import User from '../models/userModel.js'
 import Post from '../models/postModel.js'
+import { v1 } from 'uuid';
 
 
 //@access private
@@ -20,6 +21,9 @@ export const createPost = asyncHandler(async (req,res) =>{
         title,
         content
     })
+    const user = await User.findOne({username})
+    user.NoPosts = user.NoPosts + 1    
+    await user.save()
     res.status(201).json(newPost)
 })
 
@@ -80,6 +84,9 @@ export const deletePost = asyncHandler(async (req,res) =>{
     if(post){
         await Post.deleteOne({_id:req.params.id,username})
         res.json({message:'Post removed'})
+        const user = await User.findOne({username})
+        user.NoPosts = user.NoPosts - 1 
+        await user.save()
     }
     else{
         res.status(404)

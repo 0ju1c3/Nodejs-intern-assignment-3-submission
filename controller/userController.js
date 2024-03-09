@@ -86,6 +86,9 @@ export const currentUser = asyncHandler(async (req,res) =>{
         username:username,
         bio:user.bio,
         profilePictureUrl:user.profilePictureUrl,
+        NoFollowers:user.NoFollowers,
+        NoFollowing:user.NoFollowing,
+        NoPosts:user.NoPosts
     })
 })
 

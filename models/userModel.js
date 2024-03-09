@@ -7,6 +7,9 @@ const userSchema = new mongoose.Schema({
     bio: {type:String},
     profilePictureUrl : {type:String},
     password: {type:String, required:true},
+    NoFollowers: {type:Number, default:0},
+    NoFollowing: {type:Number, default:0},
+    NoPosts: {type:Number, default:0},
 }, {timestamps: true})
 
 const User = mongoose.model("User", userSchema)
