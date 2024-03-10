@@ -12,7 +12,7 @@ const validateToken = asyncHandler(async (req,res,next) =>{
             }
 //            console.log(decoded)
             console.log(decoded)
-            req.username = decoded.username
+            req.id = decoded.id
 //            console.log(decoded.id)
             next()
         })

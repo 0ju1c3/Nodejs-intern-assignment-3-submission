@@ -15,13 +15,14 @@ export const createPost = asyncHandler(async (req,res) =>{
         res.status(400)
         throw new Error('Please fill in all fields')
     }
-    const username = req.username
+    const userId = req.id
+    const user = await User.findOne({userId})
     const newPost = await Post.create({
-        username:username,
+        userId:userId,
+        username:user.username,
         title,
         content
     })
-    const user = await User.findOne({username})
     user.NoPosts = user.NoPosts + 1    
     await user.save()
     res.status(201).json(newPost)
@@ -33,8 +34,8 @@ export const createPost = asyncHandler(async (req,res) =>{
 //@route GET /posts
 //review
 export const getPosts = asyncHandler(async (req,res) =>{
-    const username = req.username
-    const posts = await Post.find({username})
+    const userId = req.id
+    const posts = await Post.find({userId})
     res.json(posts)
 })
 
@@ -43,8 +44,8 @@ export const getPosts = asyncHandler(async (req,res) =>{
 //@desc get a single post
 //@route GET /posts/:id
 export const getPost = asyncHandler(async (req,res) =>{
-    const username = req.username
-    const post = await Post.findOne({_id:req.params.id,username})
+    const userId = req.id
+    const post = await Post.findOne({_id:req.params.id,userId})
     if(post){
         res.json(post)
     }
@@ -61,8 +62,8 @@ export const getPost = asyncHandler(async (req,res) =>{
 //review
 export const updatePost = asyncHandler(async (req,res) =>{
     const {title, content} = req.body
-    const username = req.username
-    const post = await Post.findOne({_id:req.params.id,username})
+    const userId = req.id
+    const post = await Post.findOne({_id:req.params.id,userId})
     if(post){
         post.title = title || post.title
         post.content = content || post.content
@@ -79,12 +80,12 @@ export const updatePost = asyncHandler(async (req,res) =>{
 //@desc delete a post
 //@route DELETE /posts/:id
 export const deletePost = asyncHandler(async (req,res) =>{
-    const username = req.username
-    const post = await Post.findOne({_id:req.params.id,username})
+    const userId = req.id
+    const post = await Post.findOne({_id:req.params.id,userId})
     if(post){
-        await Post.deleteOne({_id:req.params.id,username})
+        await Post.deleteOne({_id:req.params.id,userId})
         res.json({message:'Post removed'})
-        const user = await User.findOne({username})
+        const user = await User.findOne({userId})
         user.NoPosts = user.NoPosts - 1 
         await user.save()
     }
