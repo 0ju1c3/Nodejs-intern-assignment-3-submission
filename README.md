@@ -16,8 +16,6 @@ The application should have the following functionalities:
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Database Schema](#database-schema)
-- [Usage Example](#usage-example)
-- [License](#license)
 
 ## Installation
 1. Clone the repository
