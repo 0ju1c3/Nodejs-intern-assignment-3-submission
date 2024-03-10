@@ -131,12 +131,12 @@
 					"name": "Profile",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Valid Token",
 							"request": {
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMmE1ZDNlLTNmZTQtNDE0YS05Yjk4LTZjMWVjMGIyMDFiNSIsImlhdCI6MTcxMDA3NzI0NSwiZXhwIjoxNzEwMDc4MTQ1fQ.7hWevYsv5BPMZ45f8CH4-x0csIuRA6uACrYZtWdD86Y"
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA4MTUxNiwiZXhwIjoxNzEwMDgyNDE2fQ.56er3Y-1QvkH05CStU4dxXRMrPaqBE2HnhCtV479dSE"
 									}
 								},
 								"method": "GET",
@@ -146,7 +146,7 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Invalid Token",
 							"request": {
 								"method": "GET",
 								"header": [],
@@ -279,7 +279,7 @@
 								"auth": {
 									"type": "bearer",
 									"bearer": {
-										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA4MTc2MywiZXhwIjoxNzEwMDgyNjYzfQ.7tbDjGVXHC2SeSnysBiXBc27b83r3RHIcrpa31j77rI"
 									}
 								},
 								"method": "POST",
@@ -294,6 +294,21 @@
 									}
 								},
 								"url": "http://localhost:3000/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "Updated User Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA4MTc2MywiZXhwIjoxNzEwMDgyNjYzfQ.7tbDjGVXHC2SeSnysBiXBc27b83r3RHIcrpa31j77rI"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/users/profile"
 							},
 							"response": []
 						}
@@ -551,8 +566,15 @@
 						{
 							"name": "Valid Token",
 							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA4MTc2MywiZXhwIjoxNzEwMDgyNjYzfQ.7tbDjGVXHC2SeSnysBiXBc27b83r3RHIcrpa31j77rI"
+									}
+								},
 								"method": "GET",
-								"header": []
+								"header": [],
+								"url": "http://localhost:3000/follow/d6e9acef-b44d-4e3f-a459-4685f9921220"
 							},
 							"response": []
 						},
@@ -562,6 +584,45 @@
 								"method": "POST",
 								"header": [],
 								"url": "http://localhost:3000/follow/user/d6e9acef-b44d-4e3f-a459-4685f9921220"
+							},
+							"response": []
+						},
+						{
+							"name": "All Users",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA4MTc2MywiZXhwIjoxNzEwMDgyNjYzfQ.7tbDjGVXHC2SeSnysBiXBc27b83r3RHIcrpa31j77rI"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/follow"
+							},
+							"response": []
+						},
+						{
+							"name": "Get Following-Invalid Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/follow/following"
+							},
+							"response": []
+						},
+						{
+							"name": "Unfollow User - Valid Token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA4MTc2MywiZXhwIjoxNzEwMDgyNjYzfQ.7tbDjGVXHC2SeSnysBiXBc27b83r3RHIcrpa31j77rI"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:3000/follow/unfollow/d6e9acef-b44d-4e3f-a459-4685f9921220"
 							},
 							"response": []
 						}
@@ -580,7 +641,7 @@
 							"response": []
 						},
 						{
-							"name": "New Request",
+							"name": "Valid Token",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
@@ -641,7 +702,7 @@
 					"name": "FollowPost",
 					"item": [
 						{
-							"name": "New Request",
+							"name": "Invalid Token",
 							"request": {
 								"auth": {
 									"type": "bearer",
