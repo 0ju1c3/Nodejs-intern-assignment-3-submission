@@ -38,6 +38,7 @@ The following environment variables are required for the application to run:
 ```env
 JWT_SECRET=your-secret-key
 CONNECTION_STRING=mongodb://username:password@host:port/database?options
+PORT=3000
 ```
 
 ## Usage
