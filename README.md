@@ -103,7 +103,7 @@ Description: Get the profile of the logged in user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token
+    "Authorization":"Bearer token"
 }
 ```
 Response Format:
@@ -116,7 +116,7 @@ Response Format:
         "profilePictureUrl": "string",
         "NoFollowers":"number",
         "NoFollowings":"number",
-        "NoPosts":"number'
+        "NoPosts":"number"
     }
 }
 ```
@@ -129,7 +129,7 @@ Description: Update the profile of the logged in user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token
+    "Authorization":"Bearer token"
     "bio":"string",
     "profilePictureUrl":"string"
     "password":"string",
@@ -146,7 +146,7 @@ Response Format:
         "profilePictureUrl": "string",
         "NoFollowers":"number",
         "NoFollowings":"number",
-        "NoPosts":"number'
+        "NoPosts":"number"
     }
 }
 ```
@@ -288,7 +288,7 @@ Response Headers:
         "profilePictureUrl": "string",
         "NoFollowers":"number",
         "NoFollowings":"number",
-        "NoPosts":"number'
+        "NoPosts":"number"
     }
 }
 ```
