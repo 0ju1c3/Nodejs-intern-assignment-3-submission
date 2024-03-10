@@ -40,7 +40,7 @@ The application can be used to create a basic social networking application. The
 The following are the API endpoints of the application:
 1. User registration
 
-###Endpoint : /users/register
+**Endpoint : /users/register
 Method: POST
 Description: Register a new user
 Request Body:
@@ -77,7 +77,7 @@ Response Format:
 
 
 2. User login
-###Endpoint : /users/login
+**Endpoint : /users/login
 Method: POST
 Description: Login a user
 Request Body:
@@ -97,7 +97,7 @@ response format:
 
 
 3. Profile
-###Endpoint : /users/profile
+**Endpoint : /users/profile
 Method: GET
 Description: Get the profile of the logged in user
 Request Headers:
@@ -123,7 +123,7 @@ Response Format:
 
 
 4. Update Profile
-###Endpoint : /users/profile
+**Endpoint : /users/profile
 Method: PUT
 Description: Update the profile of the logged in user
 Request Headers:
@@ -152,7 +152,7 @@ Response Format:
 ```
 
 5. Post a message
-###Endpoint : /posts
+**Endpoint : /posts
 Method: POST
 Description: Post a message
 Request Headers:
@@ -178,7 +178,7 @@ Response Format:
 ```
 
 6. Get all posts of a user
-###Endpoint : /posts
+**Endpoint : /posts
 Method: GET
 Description: Get all posts of a user
 Request Headers:
@@ -202,7 +202,7 @@ Response Headers:
 ```
 
 7. Update a post
-###Endpoint : /posts/:postId
+**Endpoint : /posts/:postId
 Method: PUT
 Description: Update a post
 Request Headers:
@@ -227,7 +227,7 @@ Response Headers:
 ```
 
 8. Delete a post
-###Endpoint : /posts/:postId
+**Endpoint : /posts/:postId
 Method: DELETE
 Description: Delete a post
 Request Headers:
@@ -245,7 +245,7 @@ Response Headers:
 
 
 9. Get all Users
-###Endpoint : /follow
+**Endpoint : /follow
 Method: GET
 Description: Get all users
 Request Headers:
@@ -269,7 +269,7 @@ Response Headers:
 ```
 
 10. Get a User
-###Endpoint : /follow/:userId
+**Endpoint : /follow/:userId
 Method: GET
 Description: Get a user
 Request Headers:
@@ -294,7 +294,7 @@ Response Headers:
 ```
 
 11. Follow a user
-###Endpoint : /follow/:userId
+**Endpoint : /follow/:userId
 Method: POST
 Description: Follow a user
 Request Headers:
@@ -314,7 +314,7 @@ Response Headers:
 ```
 
 12. Get followings of a user
-###Endpoint : /follow/followings
+**Endpoint : /follow/followings
 Method: GET
 Description: Get followings of a user
 Request Headers:
@@ -334,7 +334,7 @@ Response Headers:
 ```
 
 13. Get followers of a user
-###Endpoint : /follow/followers
+**Endpoint : /follow/followers
 Method: GET
 Description: Get followers of a user
 Request Headers:
@@ -355,7 +355,7 @@ Response Headers:
 
 
 14. Unfollow a user
-###Endpoint : /follow/:userId
+**Endpoint : /follow/:userId
 Method: DELETE
 Description: Unfollow a user
 Request Headers:
@@ -372,7 +372,7 @@ Response Headers:
 ```
 
 15. Get posts of followings
-###Endpoint : /follow/posts
+**Endpoint : /follow/posts
 Method: GET
 Description: Get posts  of followings
 Request Headers:
