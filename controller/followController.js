@@ -94,7 +94,13 @@ export const getFollowing = asyncHandler(async (req, res) => {
         "followingId",
         "following"
     ])
-    res.json(following)
+    if(following){
+        res.json(following)
+    }
+    else{
+        res.status(404)
+        throw new Error('No user found')
+    }
 })
 
 // @access private

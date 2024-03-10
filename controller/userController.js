@@ -133,4 +133,28 @@ export const updateUserProfile = asyncHandler(async (req,res) =>{
 })
 
 //delete user
+//@access private
+//@desc Delete user profile
+//@route DELETE /users/profile
+//accessed by the user who is logged in;
+export const deleteUserProfile = asyncHandler(async (req,res) =>{
+    if(!req.id){
+        res.status(404)
+        throw new Error('User not found')
+    }
+    const userId  = req.id
+    const user = await User.findOne({userId})//check if user exists
+    if(user){
+        await user.deleteOne({userId})
+        res.json({message:'User removed'})
+    }
+    else{
+        res.status(404)
+        throw new Error('User not found')
+    }
+})
+
+
+
+
 
