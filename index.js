@@ -27,7 +27,7 @@ app.use('/follow',followRouter)
 app.use("/posts", postRouter)
 app.use("/", (req, res) => {
   return res.json({
-    message: "Welcome to the Node.js REST API using ExpressJS and MongoDB"
+    message: "Nodejs intern assignment-3 submission"
   });
 });
 app.use(errorHandler)
