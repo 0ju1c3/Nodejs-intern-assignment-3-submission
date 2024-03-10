@@ -1,0 +1,663 @@
+{
+	"info": {
+		"_postman_id": "a1e55a80-a6d0-4bfc-a06b-64fe6409d1c7",
+		"name": "Node Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32307002"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register",
+					"item": [
+						{
+							"name": "Incomplete Data",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"Test\",\n    \"bio\":\"Testing bio\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/register"
+							},
+							"response": []
+						},
+						{
+							"name": "User 1 -- weak password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"Temp\",\n    \"bio\":\"Temp bio\",\n    \"profilePictureUrl\":\"hello.jpg\",\n    \"password\":\"tempPassword\",\n    \"confirmPassword\":\"tempPassword\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/register"
+							},
+							"response": []
+						},
+						{
+							"name": "User 1",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"Temp\",\n    \"bio\":\"Temp bio\",\n    \"profilePictureUrl\":\"hello.jpg\",\n    \"password\":\"Hello@123\",\n    \"confirmPassword\":\"Hello@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/register"
+							},
+							"response": []
+						},
+						{
+							"name": "User 2",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"tempUser\",\n    \"bio\":\"Temp bio\",\n    \"profilePictureUrl\":\"hello.jpg\",\n    \"password\":\"Hello@123\",\n    \"confirmPassword\":\"Hello@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/register"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"item": [
+						{
+							"name": "Incorrect Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"tempUser\",\n    \"password\":\"Hello@12\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/login"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid Password",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"tempUser\",\n    \"password\":\"Hello@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/login"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMmE1ZDNlLTNmZTQtNDE0YS05Yjk4LTZjMWVjMGIyMDFiNSIsImlhdCI6MTcxMDA3NzI0NSwiZXhwIjoxNzEwMDc4MTQ1fQ.7hWevYsv5BPMZ45f8CH4-x0csIuRA6uACrYZtWdD86Y"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/users/profile"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/users/profile"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Update User",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bio\":\"changing bio\",\n    \"profilePictureUrl\":\"temp.jsp\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/profile"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMmE1ZDNlLTNmZTQtNDE0YS05Yjk4LTZjMWVjMGIyMDFiNSIsImlhdCI6MTcxMDA3NzI0NSwiZXhwIjoxNzEwMDc4MTQ1fQ.7hWevYsv5BPMZ45f8CH4-x0csIuRA6uACrYZtWdD86Y"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"bio\":\"changing bio\",\n    \"profilePictureUrl\":\"temp.jsp\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/users/profile"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete User",
+					"item": [
+						{
+							"name": "Invalid Token",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:3000/users/profile"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid Token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3OTY0NCwiZXhwIjoxNzEwMDgwNTQ0fQ.ROy-nj7rTRQ8TOXlgLLTww9AxfAcjZMOE6tkrl3j518"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:3000/users/profile"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Posts",
+			"item": [
+				{
+					"name": "Create",
+					"item": [
+						{
+							"name": "Invalid - no token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "http://localhost:3000/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid token, invalid response",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"Hello\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/posts"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid token and response",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+									}
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\":\"Hello World 2\",\n    \"content\":\"Planet Earth 2\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/posts"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Read",
+					"item": [
+						{
+							"name": "All Posts",
+							"item": [
+								{
+									"name": "Get all posts, invalid token",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/posts"
+									},
+									"response": []
+								},
+								{
+									"name": "Get all posts, valid token",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/posts"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Single Post",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/posts/65edb852f6ff51a58c838ca9"
+									},
+									"response": []
+								},
+								{
+									"name": "Valid token and postId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/posts/65edb852f6ff51a58c838ca9"
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Update Post",
+					"item": [
+						{
+							"name": "invalid Token",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\":\"Hello World 1233\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/posts/65edb852f6ff51a58c838ca9"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid Token and postId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\":\"Hello World 1234\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/posts/65edb852f6ff51a58c838ca9"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid Token and invalid PostId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+									}
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"content\":\"Hello WOlrd\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/posts/65edb852f6ff51a58c838c"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delete",
+					"item": [
+						{
+							"name": "Valid Token and PostId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:3000/posts/65edba6af6ff51a58c838cb1"
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Token",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:3000/posts/65edba6af6ff51a58c838cb1"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid Token and invalid PostId",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3Nzk4MCwiZXhwIjoxNzEwMDc4ODgwfQ.6cZqaa_fj0vm_Oe-Z5iAZtJn_2HbP3x_bqFN77cpqcY"
+									}
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": "http://localhost:3000/posts/65edba6af6ff51a58c83"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Follow",
+			"item": [
+				{
+					"name": "Users",
+					"item": [
+						{
+							"name": "All Users",
+							"item": [
+								{
+									"name": "Valid Token",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3ODc5MSwiZXhwIjoxNzEwMDc5NjkxfQ.xU3LoK2T_5cKwKWNQp7TPXsChtAgMDK74dorgDCaQF4"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/follow"
+									},
+									"response": []
+								},
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/follow"
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "User",
+							"item": [
+								{
+									"name": "Invalid Token",
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/follow/d6e9acef-b44d-4e3f-a459-4685f9921220"
+									},
+									"response": []
+								},
+								{
+									"name": "Valid Token",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": {
+												"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3ODc5MSwiZXhwIjoxNzEwMDc5NjkxfQ.xU3LoK2T_5cKwKWNQp7TPXsChtAgMDK74dorgDCaQF4"
+											}
+										},
+										"method": "GET",
+										"header": [],
+										"url": "http://localhost:3000/follow/d6e9acef-b44d-4e3f-a459-4685f9921220"
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Follow User",
+					"item": [
+						{
+							"name": "Valid Token",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "Invalid Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": "http://localhost:3000/follow/user/d6e9acef-b44d-4e3f-a459-4685f9921220"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Following",
+					"item": [
+						{
+							"name": "Invalid Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/follow/following"
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQwODUzZjA4LWMyYzQtNDE5Yy04MGZiLWI2OTlhNmVhZGI2YyIsImlhdCI6MTcxMDA3OTY4MSwiZXhwIjoxNzEwMDgwNTgxfQ.nWuoNKa_yrttPfvy0osqr5Ye537noa9kQQy84xKZ6tM"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"username\":\"tempUser\",\n    \"password\":\"Hello@123\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "http://localhost:3000/follow/following"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Follower",
+					"item": [
+						{
+							"name": "Invalid Token",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/follow/followers"
+							},
+							"response": []
+						},
+						{
+							"name": "Valid Token",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2ZTlhY2VmLWI0NGQtNGUzZi1hNDU5LTQ2ODVmOTkyMTIyMCIsImlhdCI6MTcxMDA3OTI3MiwiZXhwIjoxNzEwMDgwMTcyfQ.0oJjkB-jXQ6UJdpv0X2RvysT_CKJ-US5RsHXEQ-zzCo"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/follow/followers"
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "FollowPost",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": {
+										"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImQ2ZTlhY2VmLWI0NGQtNGUzZi1hNDU5LTQ2ODVmOTkyMTIyMCIsImlhdCI6MTcxMDA3OTI3MiwiZXhwIjoxNzEwMDgwMTcyfQ.0oJjkB-jXQ6UJdpv0X2RvysT_CKJ-US5RsHXEQ-zzCo"
+									}
+								},
+								"method": "GET",
+								"header": [],
+								"url": "http://localhost:3000/follow/posts"
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

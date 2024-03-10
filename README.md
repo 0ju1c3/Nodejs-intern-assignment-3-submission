@@ -16,6 +16,7 @@ The application should have the following functionalities:
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Database Schema](#database-schema)
+- [Integration Testing](#integration-testing)
 
 ## Installation
 1. Clone the repository
@@ -462,3 +463,28 @@ The `follows` collection stores information about the users that a user is follo
 - **follower**: References the `User` collection using the `follower` field.
 - **followingId**: References the `User` collection using the `followingId` field.
 - **following**: References the `User` collection using the `following` field.
+
+## Integration Testing
+The application has been tested using Collection Runner in Postman. The tests include the following:
+1. User registration
+2. User login
+3. User profile
+4. Update profile
+5. Delete user
+6. Post a message
+7. Update a post
+8. Get all Posts
+9. Get a post
+10. Delete a post
+11. Get all Users
+12. Get a User
+13. Follow a user
+14. Get followings of the current user
+15. Get followers of the current user
+16. Unfollow a user
+17. Get posts of followings
+
+The tests have been written to ensure that the API endpoints are working as expected and that the responses are correct.
+To run the tests, import the `Node Assignment.postman_collection.json` file in the test directiory and run the collection.
+
+
