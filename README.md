@@ -11,12 +11,17 @@ The application should have the following functionalities:
 8. Get the posts  of a user
 
 ## Table of Contents
+- [Deployment Link](#deployment-link)
 - [Installation](#installation)
 - [ENV Variables](#env-variables)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Database Schema](#database-schema)
 - [Integration Testing](#integration-testing)
+
+## Deployment Link 
+The application has been deployed on render. The application can be accessed using the following link:
+https://nodejs-intern-assignment-3-submission-igb7.onrender.com
 
 ## Installation
 1. Clone the repository
