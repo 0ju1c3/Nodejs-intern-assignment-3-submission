@@ -88,21 +88,21 @@ export const followUser = asyncHandler(async (req, res) => {
 // @desc display all users that the current user is following
 // @route GET /follow/following
 // @param id
+
 export const getFollowing = asyncHandler(async (req, res) => {
-    const userId = req.id
+    const userId = req.id;
     const following = await Follow.find({ followerId: userId }).select([
         "followingId",
         "following"
-    ])
-    if(following){
-        res.json(following)
-    }
-    else{
-        res.status(404)
-        throw new Error('No user found')
-    }
-})
+    ]);
 
+    if (following.length > 0) {
+        res.json({following});
+    } else {
+        res.status(404);
+        throw new Error('No user found');
+    }
+});
 // @access private
 // @desc display all users that are following the current user
 // @route GET /follow/followers

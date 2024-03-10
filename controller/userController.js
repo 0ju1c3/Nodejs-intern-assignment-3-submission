@@ -87,15 +87,17 @@ export const currentUser = asyncHandler(async (req,res) =>{
         res.status(404)
         throw new Error('User not found')
     }
-    res.json({
-        userId:userId,
-        username:user.username,
-        bio:user.bio,
-        profilePictureUrl:user.profilePictureUrl,
-        NoFollowers:user.NoFollowers,
-        NoFollowing:user.NoFollowing,
-        NoPosts:user.NoPosts
-    })
+    else{
+        res.json({
+            userId:user.userId,
+            username:user.username,
+            bio:user.bio,
+            profilePictureUrl:user.profilePictureUrl,
+            NoFollowers:user.NoFollowers,
+            NoFollowing:user.NoFollowing,
+            NoPosts:user.NoPosts
+        })
+    }    
 })
 
 //@access private
