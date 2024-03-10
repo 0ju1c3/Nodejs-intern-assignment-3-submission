@@ -5,9 +5,18 @@ import postRouter from "./routes/postRouter.js"
 import sanitize from "sanitize"
 import errorHandler from "./middleware/errorHandler.js"
 import followRouter from "./routes/followRoute.js"
-// Correct the path if needed
+import { rateLimit } from 'express-rate-limit'
+
+const limiter = rateLimit({
+	windowMs: 15 * 60 * 1000, // 15 minutes
+	limit: 100, 
+	standardHeaders: 'draft-7',
+	legacyHeaders: false,
+})
+
 const app = express()
 connectionDb()
+app.use(limiter)
 app.use(sanitize.middleware)
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
