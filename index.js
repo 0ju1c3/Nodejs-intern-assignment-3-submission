@@ -5,7 +5,7 @@ import postRouter from "./routes/postRouter.js"
 import sanitize from "sanitize"
 import errorHandler from "./middleware/errorHandler.js"
 import followRouter from "./routes/followRoute.js"
-import { rateLimit } from 'express-rate-limit'
+import rateLimit from 'express-rate-limit'
 
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
