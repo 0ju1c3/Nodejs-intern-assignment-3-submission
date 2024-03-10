@@ -16,6 +16,7 @@ const limiter = rateLimit({
 
 const app = express()
 connectionDb()
+app.set('trust proxy', true)
 app.use(limiter)
 app.use(sanitize.middleware)
 app.use(express.json())
