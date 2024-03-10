@@ -10,7 +10,7 @@ The application should have the following functionalities:
 7. Get all followings of a user
 8. Get the posts  of a user
 
-##Table of Contents
+## Table of Contents
 - [Installation](#installation)
 - [ENV Variables](#env-variables)
 - [Usage](#usage)
@@ -19,7 +19,7 @@ The application should have the following functionalities:
 - [Usage Example](#usage-example)
 - [License](#license)
 
-##Installation
+## Installation
 1. Clone the repository
 ```bash
 git clone https://github.com/0ju1c3/Nodejs-intern-assignment-3-submission.git
@@ -33,7 +33,7 @@ npm install
 npm start
 ```
 
-##ENV Variables
+## ENV Variables
 The following environment variables are required for the application to run:
 
 ```env
@@ -42,10 +42,10 @@ CONNECTION_STRING=mongodb://username:password@host:port/database?options
 ```
 
 
-##Usage
+## Usage
 The application can be used to create a basic social networking application. The application can be used to register users, login, post messages, follow users, get followers, get followings, and get posts  of a user.
 
-##API Endpoints
+## API Endpoints
 The following are the API endpoints of the application:
 1. User registration
 
@@ -403,3 +403,57 @@ Response Headers:
     ]
 }
 ```
+
+## Database Schema
+
+
+### User-Fields
+The `users` collection stores information about registered users.
+
+- **_id**: ObjectId (automatically generated)
+- **userId**: String (generated using uuidv4, required, unique) - Unique identifier for the user.
+- **username**: String (required, unique) - The username of the user.
+- **bio**: String - The biography or additional information about the user.
+- **profilePictureUrl**: String - The URL of the user's profile picture.
+- **password**: String (required) - The hashed password of the user.
+- **NoFollowers**: Number (default: 0) - The number of followers for the user.
+- **NoFollowing**: Number (default: 0) - The number of users the user is following.
+- **NoPosts**: Number (default: 0) - The total number of posts created by the user.
+- **createdAt**: Date (automatically generated) - The timestamp when the user was created.
+- **updatedAt**: Date (automatically generated) - The timestamp when the user was last updated.
+
+### Post-Fields
+The `posts` collection stores information about the posts created by users.
+
+
+- **_id**: ObjectId (automatically generated)
+- **userId**: String (required, reference to User collection) - The unique identifier of the user who created the post.
+- **username**: String (required, reference to User collection) - The username of the user who created the post.
+- **title**: String (required) - The title of the post.
+- **content**: String (required) - The content or body of the post.
+- **createdAt**: Date (automatically generated) - The timestamp when the post was created.
+- **updatedAt**: Date (automatically generated) - The timestamp when the post was last updated.
+
+### Relationships
+
+- **userId**: References the `User` collection using the `userId` field.
+- **username**: References the `User` collection using the `username` field.
+
+
+### Follow-Fields
+The `follows` collection stores information about the users that a user is following and the users that are following the user.
+
+- **_id**: ObjectId (automatically generated)
+- **followerId**: String (required, reference to User collection) - The unique identifier of the follower user.
+- **follower**: String (required, reference to User collection) - The username of the follower user.
+- **followingId**: String (required, reference to User collection) - The unique identifier of the user being followed.
+- **following**: String (required, reference to User collection) - The username of the user being followed.
+- **createdAt**: Date (automatically generated) - The timestamp when the follow relationship was created.
+- **updatedAt**: Date (automatically generated) - The timestamp when the follow relationship was last updated.
+
+### Relationships
+
+- **followerId**: References the `User` collection using the `followerId` field.
+- **follower**: References the `User` collection using the `follower` field.
+- **followingId**: References the `User` collection using the `followingId` field.
+- **following**: References the `User` collection using the `following` field.
