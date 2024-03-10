@@ -64,21 +64,7 @@ Request Body:
 Response Format:
 ```json
 {
-    "message": "User registered successfully",
-    "user": {
-        "_id": "string",
-        "username": "string",
-        "bio": "string",
-        "profilePictureUrl": "string",
-        "password": "string",
-        "createdAt": "string",
-        "updatedAt": "string",
-        "NoFollowers": 0,
-        "NoFollowings": 0,
-        "NoPosts": 0,
-        "__v": 0
-    },
-    "token": "string"
+    "accessToken": "string"
 }
 ```
 
@@ -97,8 +83,7 @@ Request Body:
 response format:
 ```json
 {
-    "message": "User logged in successfully",
-    "token": "string"
+    "accessToken": "string"
 }
 ```
 
@@ -110,21 +95,19 @@ Description: Get the profile of the logged in user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Format:
 ```json
 {
-    "user": {
-        "_id": "string",
-        "username": "string",
-        "bio": "string",
-        "profilePictureUrl": "string",
-        "NoFollowers":"number",
-        "NoFollowings":"number",
-        "NoPosts":"number"
-    }
+    "userId": "string",
+    "username": "string",
+    "bio": "string",
+    "profilePictureUrl": "string",
+    "NoFollowers":"number",
+    "NoFollowings":"number",
+    "NoPosts":"number"
 }
 ```
 
@@ -136,25 +119,22 @@ Description: Update the profile of the logged in user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
     "bio":"string",
-    "profilePictureUrl":"string"
+    "profilePictureUrl":"string",
     "password":"string",
 }
 ```
 Response Format:
 ```json
 {
-    "message": "Profile updated successfully",
-    "user": {
-        "_id": "string",
-        "username": "string",
-        "bio": "string",
-        "profilePictureUrl": "string",
-        "NoFollowers":"number",
-        "NoFollowings":"number",
-        "NoPosts":"number"
-    }
+    "userId": "string",
+    "username": "string",
+    "bio": "string",
+    "profilePictureUrl": "string",
+    "NoFollowers":"number",
+    "NoFollowings":"number",
+    "NoPosts":"number"
 }
 ```
 
@@ -165,7 +145,7 @@ Description: Post a message
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
     "title":"string",
     "content":"string"
 }
@@ -174,48 +154,73 @@ Request Headers:
 Response Format:
 ```json
 {
-    "message": "Post created successfully",
-    "post": {
-        "userId": "string",
-        "username": "string",
-        "title": "string",
-        "content": "string",
-    }
+    "userId": "string",
+    "username": "string",
+    "title": "string",
+    "content": "string",
+    "_id": "string",
+    "createdAt": "string",
+    "updatedAt": "string"
 }
 ```
 
-6. Get all posts of a user
+6. Get a post of a user
+**Endpoint : /posts/:postId**
+Method: GET
+Description: Get a post of a user
+Request Headers:
+```json
+{
+    "Authorization":"Bearer accessToken"
+}
+```
+Response Headers:
+```json
+{
+    "userId": "string",
+    "username": "string",
+    "title": "string",
+    "content": "string",
+    "_id": "string",
+    "createdAt": "string",
+    "updatedAt": "string"
+}
+```
+
+7. Get all posts of a user
 **Endpoint : /posts**
 Method: GET
 Description: Get all posts of a user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:
 ```json
 {
-    "posts": [
-        {
-            "userId": "string",
+    {
+
+        "userId": "string",
             "username": "string",
             "title": "string",
             "content": "string",
-        }
-    ]
+            "_id": "string",
+            "createdAt": "string",
+            "updatedAt": "string"
+    },
 }
 ```
 
-7. Update a post
+8. Update a post
 **Endpoint : /posts/:postId**
 Method: PUT
 Description: Update a post
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token",
+    "Authorization":"Bearer accessToken",
     "title":"string",
     "content":"string"
 }
@@ -223,24 +228,24 @@ Request Headers:
 Response Headers:
 ```json
 {
-    "message": "Post updated successfully",
-    "post": {
-        "userId": "string",
-        "username": "string",
-        "title": "string",
-        "content": "string",
-    }
+    "_id": "string",
+    "userId": "string",
+    "username": "string",
+    "title": "string",
+    "content": "string",
+    "createdAt": "string",
+    "updatedAt": "string"
 }
 ```
 
-8. Delete a post
+9. Delete a post
 **Endpoint : /posts/:postId**
 Method: DELETE
 Description: Delete a post
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }   
 ```
 Response Headers:
@@ -251,14 +256,14 @@ Response Headers:
 ```
 
 
-9. Get all Users
+10. Get all Users
 **Endpoint : /follow**
 Method: GET
 Description: Get all users
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:
@@ -267,6 +272,7 @@ Response Headers:
     "users": [
         {
             "_id": "string",
+            "userId": "string",
             "username": "string",
             "bio": "string",
             "profilePictureUrl": "string",
@@ -275,14 +281,14 @@ Response Headers:
 }
 ```
 
-10. Get a User
+11. Get a User
 **Endpoint : /follow/:userId**
 Method: GET
 Description: Get a user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:
@@ -290,6 +296,7 @@ Response Headers:
 {
     "user": {
         "_id": "string",
+        "userId": "string",
         "username": "string",
         "bio": "string",
         "profilePictureUrl": "string",
@@ -300,14 +307,14 @@ Response Headers:
 }
 ```
 
-11. Follow a user
-**Endpoint : /follow/:userId**
+12. Follow a user
+**Endpoint : /follow/user/:userId**
 Method: POST
 Description: Follow a user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:
@@ -320,14 +327,14 @@ Response Headers:
 }
 ```
 
-12. Get followings of a user
+13. Get followings of a user
 **Endpoint : /follow/followings**
 Method: GET
 Description: Get followings of a user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:
@@ -340,14 +347,14 @@ Response Headers:
 }
 ```
 
-13. Get followers of a user
+14. Get followers of a user
 **Endpoint : /follow/followers**
 Method: GET
 Description: Get followers of a user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:
@@ -361,14 +368,14 @@ Response Headers:
 ```
 
 
-14. Unfollow a user
+15. Unfollow a user
 **Endpoint : /follow/:userId**
 Method: DELETE
 Description: Unfollow a user
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:
@@ -378,14 +385,14 @@ Response Headers:
 }
 ```
 
-15. Get posts of followings
+16. Get posts of followings
 **Endpoint : /follow/posts**
 Method: GET
 Description: Get posts  of followings
 Request Headers:
 ```json
 {
-    "Authorization":"Bearer token"
+    "Authorization":"Bearer accessToken"
 }
 ```
 Response Headers:

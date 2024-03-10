@@ -12,13 +12,13 @@ const validateToken = asyncHandler(async (req,res,next) =>{
             }
 //            console.log(decoded)
             console.log(decoded)
+            console.log(decoded.id)
             req.id = decoded.id
-//            console.log(decoded.id)
             next()
         })
     }
     if(!token){
-        res.status(401)
+        res.status(401).json({message:"Not authorized, no token"})
         throw new Error('Not authorized, no token')
     }
 })

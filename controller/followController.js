@@ -126,7 +126,7 @@ export const unfollowUser = asyncHandler(async (req, res) => {
             const updateCurrentUser = await currentUser.save()
             followUser.NoFollowers = followUser.NoFollowers - 1
             const updateFollowUser = await followUser.save()
-            await follow.remove()
+            await follow.deleteOne({ followerId: userId, followingId: followingId })
             res.json({ message: 'User unfollowed' })
         }
         else {

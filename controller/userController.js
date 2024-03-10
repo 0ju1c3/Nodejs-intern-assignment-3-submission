@@ -6,15 +6,9 @@ import validator from 'validator'
 
 //@access public
 //@desc Auth user & get token
-//@route POST /users/login
+//@route POST /users/register
 export const registerUser = asyncHandler(async (req,res) =>{
     const {username, bio,profilePictureUrl,password, confirmPassword} = req.body
-    username = username.trim()
-    bio = bio.trim()
-    profilePictureUrl = profilePictureUrl.trim()
-    password = password.trim()
-    confirmPassword = confirmPassword.trim()
-
     if(!username || !bio || !profilePictureUrl || !password || !confirmPassword){
         res.status(400)
         throw new Error('Please fill in all fields')
@@ -22,8 +16,7 @@ export const registerUser = asyncHandler(async (req,res) =>{
     if(password !== confirmPassword){
         res.status(400)
         throw new Error('Passwords do not match')
-    }
-    if(!validator.isStrongPassword(password,{
+    } if(!validator.isStrongPassword(password,{
         minLength:8,
         minLowercase:1,
         minUppercase:1,
@@ -45,27 +38,27 @@ export const registerUser = asyncHandler(async (req,res) =>{
         profilePictureUrl,
         password:hashedPassword
     })
+    console.log(newUser)
     if(newUser){
         const accessToken = jwt.sign({
-            id:user.userId,
+            id:newUser.userId,
         },process.env.JWT_SECRET,{expiresIn:'15m'})
         res.status(201).json({accessToken})
     }
     else{
         res.status(400).json({message:"Invalid user data"})
     }
-    res.json({message:"User registered successfully"},{accessToken},{newUser})
 })
 
 //@access public
 //@desc Auth user & get token
 //@route POST /users/login
 export const loginUser = asyncHandler(async (req,res) =>{
-    const {username, password} = req.body
-    if(!username || !password){
+    if(!req.body.username || !req.body.password){
         res.status(400)
         throw new Error('Please fill in all fields')
     }
+    const {username, password} = req.body
     const user = await User.findOne({username})//check if user exists
     if(user && (await bcrypt.compare(password,user.password))){
         const accessToken = jwt.sign({
@@ -77,7 +70,6 @@ export const loginUser = asyncHandler(async (req,res) =>{
         res.status(401)
         throw new Error('Invalid username or password')
     }
-    res.json({message:"User logged in successfully"})
 })
 
 //@access private
@@ -85,9 +77,16 @@ export const loginUser = asyncHandler(async (req,res) =>{
 //@route GET /users/profile
 //accessed by the user who is logged in
 export const currentUser = asyncHandler(async (req,res) =>{
-    const userId  = req.id
+    if(!req.id){
+        res.status(404)
+        throw new Error('User not found')
+    }
+    const userId = req.id
     const user = await User.findOne({userId})//check if user exists
-    console.log({user})
+    if(!user){
+        res.status(404)
+        throw new Error('User not found')
+    }
     res.json({
         userId:userId,
         username:user.username,
@@ -104,6 +103,10 @@ export const currentUser = asyncHandler(async (req,res) =>{
 //@route PUT /users/profile
 //accessed by the user who is logged in;
 export const updateUserProfile = asyncHandler(async (req,res) =>{
+    if(!req.id){
+        res.status(404)
+        throw new Error('User not found')
+    }
     const userId  = req.id
     const user = await User.findOne({userId})//check if user exists
     if(user){
@@ -128,3 +131,6 @@ export const updateUserProfile = asyncHandler(async (req,res) =>{
         throw new Error('User not found')
     }
 })
+
+//delete user
+
