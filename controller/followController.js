@@ -14,9 +14,6 @@ export const getAllUsers = asyncHandler(async (req, res) => {
             "username",
             "bio",
             "profilePictureUrl",
-            "NoFollowers",
-            "NoFollowing",
-            "NoPosts"
         ]);
     res.json(users)
 })
@@ -156,7 +153,7 @@ export const getFollowingPosts = asyncHandler(async (req, res) => {
     const followingIds = following.map(follow => follow.followingId)
     const posts = await Post.find({ userId: { $in: followingIds } }).sort({ createdAt: -1 })
     res.json(posts)
-}
+})
 
 
 

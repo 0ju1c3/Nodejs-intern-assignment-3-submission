@@ -7,8 +7,6 @@ import validator from 'validator'
 //@access public
 //@desc Auth user & get token
 //@route POST /users/login
-
-
 export const registerUser = asyncHandler(async (req,res) =>{
     const {username, bio,profilePictureUrl,password, confirmPassword} = req.body
     username = username.trim()
@@ -25,16 +23,16 @@ export const registerUser = asyncHandler(async (req,res) =>{
         res.status(400)
         throw new Error('Passwords do not match')
     }
-//    if(!validator.isStrongPassword(password,{
-//        minLength:8,
-//        minLowercase:1,
-//        minUppercase:1,
-//        minNumbers:1,
-//        minSymbols:1,
-//        returnScore:false,
-//    })){
-//        return res.status(400).json({message:"Password is weak"})
-//    }
+    if(!validator.isStrongPassword(password,{
+        minLength:8,
+        minLowercase:1,
+        minUppercase:1,
+        minNumbers:1,
+        minSymbols:1,
+        returnScore:false,
+    })){
+        return res.status(400).json({message:"Password is weak"})
+    }
     const user = await User.findOne({username})//check if user exists
     if(user){
         res.status(400)
@@ -56,7 +54,7 @@ export const registerUser = asyncHandler(async (req,res) =>{
     else{
         res.status(400).json({message:"Invalid user data"})
     }
-    res.json({message:"User registered successfully"})
+    res.json({message:"User registered successfully"},{accessToken},{newUser})
 })
 
 //@access public
