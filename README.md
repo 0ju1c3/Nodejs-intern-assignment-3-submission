@@ -12,6 +12,7 @@ The application should have the following functionalities:
 
 ##Table of Contents
 - [Installation](#installation)
+- [ENV Variables](#env-variables)
 - [Usage](#usage)
 - [API Endpoints](#api-endpoints)
 - [Database Schema](#database-schema)
@@ -30,6 +31,14 @@ npm install
 3. Start the server
 ```bash
 npm start
+```
+
+##ENV Variables
+The following environment variables are required for the application to run:
+
+```env
+JWT_SECRET=your-secret-key
+CONNECTION_STRING=mongodb://username:password@host:port/database?options
 ```
 
 
