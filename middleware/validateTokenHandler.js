@@ -11,8 +11,6 @@ const validateToken = asyncHandler(async (req,res,next) =>{
                 throw new Error('Not authorized, token failed')
             }
 //            console.log(decoded)
-            console.log(decoded)
-            console.log(decoded.id)
             req.id = decoded.id
             next()
         })

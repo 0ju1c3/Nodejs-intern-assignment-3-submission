@@ -38,7 +38,7 @@ export const registerUser = asyncHandler(async (req,res) =>{
         profilePictureUrl,
         password:hashedPassword
     })
-    console.log(newUser)
+    //console.log(newUser)
     if(newUser){
         const accessToken = jwt.sign({
             id:newUser.userId,
