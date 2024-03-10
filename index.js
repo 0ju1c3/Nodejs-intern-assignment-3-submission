@@ -7,6 +7,7 @@ import errorHandler from "./middleware/errorHandler.js"
 import followRouter from "./routes/followRoute.js"
 import rateLimit from 'express-rate-limit'
 
+const port = process.env.PORT || 3000
 const limiter = rateLimit({
 	windowMs: 15 * 60 * 1000, // 15 minutes
 	limit: 100, 
@@ -24,13 +25,17 @@ app.use(express.urlencoded({ extended: true }))
 app.use("/users", userRouter) 
 app.use('/follow',followRouter)
 app.use("/posts", postRouter)
-app.use(errorHandler)
-
-app.use((req, res, next) => {
-  console.log('Request Headers:', req.headers);
-  next();
+app.use("/", (req, res) => {
+  return res.json({
+    message: "Welcome to the Node.js REST API using ExpressJS and MongoDB"
+  });
 });
-app.listen(3000, () => {
-    console.log("Server is running on port 3000")
-})
+app.use(errorHandler)
+const server = app.listen(port, () =>
+  console.log(`Server started listening on ${port}`)
+);
 
+process.on("unhandledRejection", (error, promise) => {
+  console.log(`Logged Error: ${error}`);
+  server.close(() => process.exit(1));
+})
