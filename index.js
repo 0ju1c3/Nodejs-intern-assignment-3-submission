@@ -26,6 +26,10 @@ app.use('/follow',followRouter)
 app.use("/posts", postRouter)
 app.use(errorHandler)
 
+app.use((req, res, next) => {
+  console.log('Request Headers:', req.headers);
+  next();
+});
 app.listen(3000, () => {
     console.log("Server is running on port 3000")
 })
