@@ -40,7 +40,6 @@ JWT_SECRET=your-secret-key
 CONNECTION_STRING=mongodb://username:password@host:port/database?options
 ```
 
-
 ## Usage
 The application can be used to create a basic social networking application. The application can be used to register users, login, post messages, follow users, get followers, get followings, and get posts  of a user.
 
