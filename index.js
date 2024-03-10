@@ -16,7 +16,7 @@ const limiter = rateLimit({
 
 const app = express()
 connectionDb()
-app.set('trust proxy', true)
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal', 'x-forwarded-for'])
 app.use(limiter)
 app.use(sanitize.middleware)
 app.use(express.json())
